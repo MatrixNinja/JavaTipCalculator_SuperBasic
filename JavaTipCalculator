@@ -1,0 +1,65 @@
+package com.egarduno.tipCalculator;
+import acm.program.*;
+import acm.graphics.*;
+import acm.io.*;
+
+/*__________________________________
+
+    ITC 115 - Emilio Garduno - 07/01/2013
+    Assignment 1 - Tip Calculator
+__________________________________*/
+
+@SuppressWarnings("serial")
+public class tipCalculator extends ConsoleProgram {
+  //CONSTANTS
+	double sTax = .09; //sales tax
+	double rTax = .02; //restaurant tax
+	
+	//VARIABLES
+	double tipUserInput;
+	double tipAmount;
+	double mealPrice;
+	double salesTax;
+	double restaurantTax;
+	double totalDue;	
+
+/*____________METHODS____________*/
+	public void run(){
+		// .setBounds(from left,from top,width,height)
+		this.getParent().getParent().setBounds(300,40,400,400);
+		println ("Enter meal price: ");
+		mealPrice = readDouble();
+		println ("Enter a tip percent (10, 15, etc.): ");
+		tipUserInput = readDouble();
+		tip();
+		println ("\nTip amount: " + tipAmount);
+		taxCalc();
+		println ("Sales Tax: " + salesTax + "\nRestaurant Tax: " + restaurantTax);
+		total();
+		println ("\nTotal with tax: " + totalDue);
+		}
+
+	private void taxCalc(){
+		if (mealPrice == 0){
+			sTax = 0;
+			rTax = 0;
+		}
+		else {
+			salesTax = mealPrice * sTax;
+			restaurantTax = mealPrice * rTax;
+		}
+	}
+	
+	private void tip(){
+		if (mealPrice == 0){
+			tipAmount = 0;
+		}
+		else {
+			tipAmount = mealPrice / tipUserInput;
+		}
+	}
+	
+	private void total(){
+		totalDue = mealPrice + salesTax + restaurantTax + tipAmount; 
+	}
+}
