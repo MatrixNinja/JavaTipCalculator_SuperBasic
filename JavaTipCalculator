@@ -5,8 +5,9 @@ import acm.io.*;
 
 /*__________________________________
 
-    ITC 115 - Emilio Garduno - 07/01/2013
-    Assignment 1 - Tip Calculator
+    Emilio Garduno
+    07/01/2013
+    Tip Calculator
 __________________________________*/
 
 @SuppressWarnings("serial")
